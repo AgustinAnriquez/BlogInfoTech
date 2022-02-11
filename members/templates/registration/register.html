@@ -1,0 +1,21 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block title %}
+Registrarse
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <h1 class="my-5">Registrarse</h1>
+<div class="form-group ">
+    <form method="POST">
+
+        {% csrf_token %}
+        {{form.as_p}}
+        <button class="btn-primary">Register</button>
+    </form>
+</div>
+</div>
+{% endblock %}

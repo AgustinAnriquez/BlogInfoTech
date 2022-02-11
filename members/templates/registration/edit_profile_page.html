@@ -1,0 +1,32 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block title %}
+Editar perfil
+{% endblock %}
+
+{% block content %}
+{% if user.is_authenticated %}
+    {% if user.id == profile.user.id %}
+        <div class="container">
+            <h1 class="my-5">Editar perfil</h1>
+            <div class="form-group ">
+                <form method="POST" enctype="multipart/form-data">
+
+                    {% csrf_token %}
+                    {{form.as_p}}
+                    <button class="btn-primary">Actualizar informacion</button>
+                </form>
+            </div>
+        </div>
+
+    {% else %}
+        No eres el usuario correcto para modificar perfil
+    {% endif %}
+
+{% else %}
+    Tu no deberias estar aqui
+{% endif %}
+
+
+{% endblock %}

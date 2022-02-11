@@ -1,0 +1,27 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% block title %}
+Login
+{% endblock %}
+{% block content %}
+
+<div class="container">
+    <h1 class="my-5">Iniciar sesion</h1>
+<div class="form-group ">
+    <form method="POST">
+
+        {% csrf_token %}
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Usuario</label>
+              <input type="text" class="form-control" name= 'username' aria-describedby="emailHelp">
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Contraseña</label>
+              <input type="password" class="form-control" name="password">
+            </div>
+        <div id="emailHelp" class="form-text">¿No tienes un usuario? <a href="{% url 'register' %}"> Registrate</a></div> <br>
+        <button class="btn-primary">Iniciar sesion</button>
+    </form>
+</div>
+</div>
+{% endblock %}

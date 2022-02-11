@@ -1,0 +1,29 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block title %}
+Editar post
+{% endblock %}
+
+{% block content %}
+{% if user.is_authenticated %}
+    {% if user.id == post.author.id %}
+        <div class="container">
+            <h1 class="my-5">Editar post</h1>
+            <div class="form-group ">
+                <form method="POST">
+                    {% csrf_token %}
+                    {{form.media}}
+                    {{form.as_p}}
+
+                    <button class="btn-primary">Actualizar</button>
+                </form>
+            </div>
+        </div>
+    {% else %}
+        Tu no deberias estar aqui
+    {% endif %}
+{% else %}
+    Tu no deberias estar aqui
+{% endif %}
+{% endblock %}

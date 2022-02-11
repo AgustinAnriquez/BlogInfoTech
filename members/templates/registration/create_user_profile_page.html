@@ -1,0 +1,25 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block title %}
+Crear pagina de perfil
+{% endblock %}
+
+{% block content %}
+{% if user.is_authenticated %}
+    <div class="container">
+        <h1 class="my-5">Crear perfil</h1>
+        <div class="form-group ">
+            <form method="POST" enctype="multipart/form-data">
+
+                {% csrf_token %}
+                {{form.as_p}}
+                <button class="btn-primary">Crear perfil</button>
+            </form>
+        </div>
+    </div>
+
+{% else %}
+    Tu no deberias estar aqui
+{% endif %}
+{% endblock %}

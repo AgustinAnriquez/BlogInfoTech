@@ -1,0 +1,94 @@
+{% extends 'layout.html' %}
+{% load static %}
+   
+{% block content %}
+<div class="card container" style="border: none; background-color: #f7f7f7;">
+    <img src="{% static 'imagenes_ods/S_SDG_logo_UN_emblem_horizontal_trans_PRINT.png' %}" class="card-img" alt="...">
+</div>
+<section id="galeria" class="container" >
+    <div class="text-center py-5">
+            <h1>¿Cuales son las ODS?</h1>
+    </div>
+    <div class="row">
+        <div class="col-lg-3">
+           <a href=""> <img src="{% static 'imagenes_ods/S-WEB-Goal-01.png' %}" alt=""></a>
+        </div>
+        <div class="col-lg-3">
+            <img src="{% static 'imagenes_ods/S-WEB-Goal-02.png' %}" alt="">
+        </div>
+        <div class="col-lg-3">
+            <img src="{% static 'imagenes_ods/S-WEB-Goal-03.png' %}" alt="">
+        </div>
+        <div class="col-lg-3">
+            <img src="{% static 'imagenes_ods/S-WEB-Goal-04.png' %}" alt="">
+        </div>
+        <div class="col-lg-3">
+            <img src="{% static 'imagenes_ods/S-WEB-Goal-05.png' %}" alt="">
+        </div>
+        <div class="col-lg-3">
+            <img src="{% static 'imagenes_ods/S-WEB-Goal-06.png' %}" alt="">
+        </div>
+        <div class="col-lg-3">
+            <img src="{% static 'imagenes_ods/S-WEB-Goal-07.png' %}" alt="">
+        </div>
+        <div class="col-lg-3">
+            <img src="{% static 'imagenes_ods/S-WEB-Goal-08.png' %}" alt="">
+        </div>
+        <div class="col-lg-3">
+            <img src="{% static 'imagenes_ods/S-WEB-Goal-09.png' %}" alt="">
+        </div>
+        <div class="col-lg-3">
+            <img src="{% static 'imagenes_ods/S-WEB-Goal-10.png' %}" alt="">
+        </div>
+        <div class="col-lg-3">
+            <img src="{% static 'imagenes_ods/S-WEB-Goal-11.png' %}" alt="">
+        </div>
+        <div class="col-lg-3">
+            <img src="{% static 'imagenes_ods/S-WEB-Goal-12.png' %}" alt="">
+        </div>
+        <div class="col-lg-3">
+            <img src="{% static 'imagenes_ods/S-WEB-Goal-13.png' %}" alt="">  
+        </div>
+        <div class="col-lg-3">
+            <img src="{% static 'imagenes_ods/S-WEB-Goal-14.png' %}" alt="">
+        </div>
+        <div class="col-lg-3">
+            <img src="{% static 'imagenes_ods/S-WEB-Goal-15.png' %}" alt="">
+        </div>
+        <div class="col-lg-3">
+            <img src="{% static 'imagenes_ods/S-WEB-Goal-16.png' %}" alt="">
+        </div>
+        <div class="col-lg-3">
+            <img src="{% static 'imagenes_ods/S-WEB-Goal-17.png' %}" alt="">
+        </div>
+    </div>
+</section>
+<div class="m-4">
+    <h2>Ultimos posts</h2>
+</div>
+{% for post in object_list %}
+<a href="{% url 'article-detail' post.pk %}" style="text-decoration: none;">
+    <div class="card m-3 border-bottom">
+        <div class="row g-0">
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title" >{{post.title}}</h5>
+                    <small> {{post.post_date}}</small>
+                    <p class="card-text">
+                        {{post.snippet}}
+                    </p>
+                    <small>
+                    {% if user.is_authenticated %}
+                        {% if user.id == post.author.id %}
+                            <a href="{% url 'update_post' post.pk %}">Editar</a>
+                            <a href="{% url 'delete_post' post.pk %}">Eliminar</a>
+                        {% endif %}
+                    </small>
+                    {% endif %}  
+                </div>
+            </div>
+        </div>
+    </div>
+</a>
+{% endfor %}
+{% endblock %}
